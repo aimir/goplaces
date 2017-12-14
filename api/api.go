@@ -39,7 +39,7 @@ func initRouting() *mux.Router {
 	s.HandleFunc("/country/{country:[0-9]+}/city", GetCountryCitiesHandler).Methods("GET")
 	s.HandleFunc("/country/{country:[A-Z]+}/city", GetCountryCodeCitiesHandler).Methods("GET")
 	s.HandleFunc("/country/{country:[0-9]+}/region/{region:[0-9]+}/city", GetCountryRegionCitiesHandler).Methods("GET")
-	s.HandleFunc("/country/{country:[A-Z]+}/region/{region:[A-Z]+}/city", GetCountryCodeRegionCodeCitiesHandler).Methods("GET")
+	s.HandleFunc("/country/{country:[A-Z]+}/region/{region:[A-Z0-9]+}/city", GetCountryCodeRegionCodeCitiesHandler).Methods("GET")
 	s.HandleFunc("/city/{id:[0-9]+}", GetCityHandler).Methods("GET")
 
 	return r
