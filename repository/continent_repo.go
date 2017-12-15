@@ -5,8 +5,8 @@ import (
 	"github.com/aimir/goplaces/database"
 )
 
-func GetAllContinents() []model.Continent {
-	var cts []model.Continent
+func GetAllContinents() []*model.Continent {
+	var cts []*model.Continent
 	database.GetDB().All(&cts)
 
 	return cts

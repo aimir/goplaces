@@ -6,21 +6,29 @@ import (
 	"net/http"
 	"encoding/json"
 	"strconv"
+	"github.com/aimir/goplaces/model"
+	"strings"
 )
 
 func GetCountriesHandler(w http.ResponseWriter, r *http.Request) {
-	json.NewEncoder(w).Encode(repository.GetAllCountries())
+	countries := repository.GetAllCountries()
+	sortCountries(countries, r)
+	json.NewEncoder(w).Encode(countries)
 }
 
 func GetContinentCountriesHandler(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
 	continent, _ := strconv.Atoi(params["continent"])
-	json.NewEncoder(w).Encode(repository.GetAllCountriesByContinentID(continent))
+	countries := repository.GetAllCountriesByContinentID(continent)
+	sortCountries(countries, r)
+	json.NewEncoder(w).Encode(countries)
 }
 
 func GetContinentCodeCountriesHandler(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
-	json.NewEncoder(w).Encode(repository.GetAllCountriesByContinentCode(params["continent"]))
+	countries := repository.GetAllCountriesByContinentCode(params["continent"])
+	sortCountries(countries, r)
+	json.NewEncoder(w).Encode(countries)
 }
 
 func GetCountryHandler(w http.ResponseWriter, r *http.Request) {
@@ -32,4 +40,17 @@ func GetCountryHandler(w http.ResponseWriter, r *http.Request) {
 func GetCountryByCodeHandler(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
 	json.NewEncoder(w).Encode(repository.GetCountryByCode(params["code"]))
+}
+
+func sortCountries(c []*model.Country, r *http.Request) {
+	queryValues := r.URL.Query()
+	sortBy := queryValues.Get("sort")
+	if sortBy == "" {
+		sortBy = "name"
+	}
+	desc := strings.ToLower(queryValues.Get("direct")) == "desc"
+	switch strings.ToLower(sortBy) {
+	case "code": model.SortCountriesByCode(c, desc)
+	default: model.SortCountriesByName(c, desc)
+	}
 }
