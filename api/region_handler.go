@@ -10,6 +10,7 @@ import (
 	"strings"
 )
 
+//Handle request to get region by country ID
 func GetCountryRegionsHandler(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
 	country, _ := strconv.Atoi(params["country"])
@@ -18,6 +19,7 @@ func GetCountryRegionsHandler(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(regions)
 }
 
+//Handle request to get region by country code
 func GetCountryCodeRegionsHandler(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
 	regions := repository.GetAllRegionsByCountryCode(params["country"])
@@ -25,6 +27,7 @@ func GetCountryCodeRegionsHandler(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(regions)
 }
 
+//Handle request to get region by ID
 func GetRegionHandler(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
 	id, _ := strconv.Atoi(params["id"])

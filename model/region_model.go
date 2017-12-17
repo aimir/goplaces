@@ -2,6 +2,7 @@ package model
 
 import "sort"
 
+//Region data structure
 type Region struct {
 	ID          int    `json:"id"`
 	Code        string `storm:"index" json:"code"`
@@ -27,6 +28,7 @@ func (s regionsByCode) Less(i, j int) bool {
 	return s.regions[i].Code < s.regions[j].Code
 }
 
+//Sorting function, sort regions by name
 func SortRegionsByName(r []*Region, desc bool) {
 	if desc {
 		sort.Sort(sort.Reverse(regionsByName{r}))
@@ -35,6 +37,7 @@ func SortRegionsByName(r []*Region, desc bool) {
 	}
 }
 
+//Sorting function, sort regions by code
 func SortRegionsByCode(r []*Region, desc bool) {
 	if desc {
 		sort.Sort(sort.Reverse(regionsByCode{r}))

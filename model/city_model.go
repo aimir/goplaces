@@ -2,6 +2,7 @@ package model
 
 import "sort"
 
+//City data structure
 type City struct {
 	ID          int    `json:"id"`
 	CountryID   int    `storm:"index" json:"-"`
@@ -13,6 +14,7 @@ type City struct {
 	Name        string `json:"name"`
 }
 
+//City view data structure (full city data)
 type CityView struct {
 	ID          int    `json:"id"`
 	CountryID   int    `json:"countryId"`
@@ -35,6 +37,7 @@ func (s citiesByName) Less(i, j int) bool {
 	return s.cities[i].Name < s.cities[j].Name
 }
 
+//Sort function. Sort cities by name
 func SortCitiesByName(c []*City, desc bool) {
 	if desc {
 		sort.Sort(sort.Reverse(citiesByName{c}))

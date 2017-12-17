@@ -10,6 +10,7 @@ import (
 	"strings"
 )
 
+//Handle request to get cities by country ID and region ID
 func GetCountryRegionCitiesHandler(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
 	country, _ := strconv.Atoi(params["country"])
@@ -19,6 +20,7 @@ func GetCountryRegionCitiesHandler(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(cities)
 }
 
+//Handle request to get cities by country code and region code
 func GetCountryCodeRegionCodeCitiesHandler(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
 	cities := repository.GetAllCitiesByCountryCodeByRegionCode(params["country"], params["region"])
@@ -26,6 +28,7 @@ func GetCountryCodeRegionCodeCitiesHandler(w http.ResponseWriter, r *http.Reques
 	json.NewEncoder(w).Encode(cities)
 }
 
+//Handle request to get cities by country ID
 func GetCountryCitiesHandler(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
 	country, _ := strconv.Atoi(params["country"])
@@ -34,6 +37,7 @@ func GetCountryCitiesHandler(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(cities)
 }
 
+//Handle request to get cities by country code
 func GetCountryCodeCitiesHandler(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
 	cities := repository.GetAllCitiesByCountryCode(params["country"])
@@ -41,6 +45,7 @@ func GetCountryCodeCitiesHandler(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(cities)
 }
 
+//Get city full data
 func GetCityHandler(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
 	id, _ := strconv.Atoi(params["id"])
