@@ -26,7 +26,7 @@ func (s continentsByCode) Less(i, j int) bool {
 	return s.continents[i].Code < s.continents[j].Code
 }
 
-//Soring function, sort containers by name
+//SortContinentsByName sorts containers by name
 func SortContinentsByName(c []*Continent, desc bool) {
 	if desc {
 		sort.Sort(sort.Reverse(continentsByName{c}))
@@ -35,7 +35,7 @@ func SortContinentsByName(c []*Continent, desc bool) {
 	}
 }
 
-//Sorting function, sort containers by code
+//SortContinentsByCode sorts containers by code
 func SortContinentsByCode(c []*Continent, desc bool) {
 	if desc {
 		sort.Sort(sort.Reverse(continentsByCode{c}))

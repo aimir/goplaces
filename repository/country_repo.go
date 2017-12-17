@@ -5,7 +5,7 @@ import (
 	"github.com/aimir/goplaces/model"
 )
 
-//Get all countries
+//GetAllCountries gets all countries
 func GetAllCountries() []*model.Country {
 	var cs []*model.Country
 	database.GetDB().All(&cs)
@@ -13,7 +13,7 @@ func GetAllCountries() []*model.Country {
 	return cs
 }
 
-//Get countries by continent ID
+//GetAllCountriesByContinentID gets countries by continent ID
 func GetAllCountriesByContinentID(continentId int) []*model.Country {
 	var cs []*model.Country
 	database.GetDB().Find("ContinentID", continentId, &cs)
@@ -21,7 +21,7 @@ func GetAllCountriesByContinentID(continentId int) []*model.Country {
 	return cs
 }
 
-//Get countries by continent code
+//GetAllCountriesByContinentCode gets countries by continent code
 func GetAllCountriesByContinentCode(continentCode string) []*model.Country {
 	var cs []*model.Country
 	database.GetDB().Find("ContinentCode", continentCode, &cs)
@@ -29,7 +29,7 @@ func GetAllCountriesByContinentCode(continentCode string) []*model.Country {
 	return cs
 }
 
-//Get country data by ID
+//GetCountry gets country data by ID
 func GetCountry(id int) model.Country {
 	var c model.Country
 	database.GetDB().One("ID", id, &c)
@@ -37,7 +37,7 @@ func GetCountry(id int) model.Country {
 	return c
 }
 
-//Get country data by code
+//GetCountryByCode gets country data by code
 func GetCountryByCode(code string) model.Country {
 	var c model.Country
 	database.GetDB().One("Code", code, &c)

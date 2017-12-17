@@ -6,7 +6,7 @@ import (
 	"github.com/aimir/goplaces/model"
 )
 
-//Get all cities
+//GetAllCities gets all cities
 func GetAllCities() []*model.City {
 	var cs []*model.City
 	database.GetDB().All(&cs)
@@ -14,7 +14,7 @@ func GetAllCities() []*model.City {
 	return cs
 }
 
-//Get cities by country ID
+//GetAllCitiesByCountryID gets cities by country ID
 func GetAllCitiesByCountryID(countryId int) []*model.City {
 	var cs []*model.City
 	database.GetDB().Find("CountryID", countryId, &cs)
@@ -22,7 +22,7 @@ func GetAllCitiesByCountryID(countryId int) []*model.City {
 	return cs
 }
 
-//Get cities by country code
+//GetAllCitiesByCountryCode gets cities by country code
 func GetAllCitiesByCountryCode(countryCode string) []*model.City {
 	var cs []*model.City
 	database.GetDB().Find("CountryCode", countryCode, &cs)
@@ -30,7 +30,7 @@ func GetAllCitiesByCountryCode(countryCode string) []*model.City {
 	return cs
 }
 
-//Get cities by country ID and region ID
+//GetAllCitiesByCountryIDByRegionID gets cities by country ID and region ID
 func GetAllCitiesByCountryIDByRegionID(countryId int, regionId int) []*model.City {
 	IDKey := fmt.Sprintf("%d_%d", countryId, regionId)
 	var cs []*model.City
@@ -39,7 +39,7 @@ func GetAllCitiesByCountryIDByRegionID(countryId int, regionId int) []*model.Cit
 	return cs
 }
 
-//Get cities by country code and region code
+//GetAllCitiesByCountryCodeByRegionCode gets cities by country code and region code
 func GetAllCitiesByCountryCodeByRegionCode(countryCode string, regionCode string) []*model.City {
 	CodeKey := fmt.Sprintf("%s_%s", countryCode, regionCode)
 	var cs []*model.City
@@ -48,7 +48,7 @@ func GetAllCitiesByCountryCodeByRegionCode(countryCode string, regionCode string
 	return cs
 }
 
-//Get city by ID
+//GetCity gets city by ID
 func GetCity(id int) model.City {
 	var c model.City
 	database.GetDB().One("ID", id, &c)
@@ -56,7 +56,7 @@ func GetCity(id int) model.City {
 	return c
 }
 
-//Get city viewer by city ID
+//GetCityView gets city viewer by city ID
 func GetCityView(id int) model.CityView {
 	city := GetCity(id)
 	country := GetCountry(city.CountryID)

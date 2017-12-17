@@ -7,7 +7,7 @@ import (
 	"net/http"
 )
 
-//Start API server
+//StartAPI starts API server
 func StartAPI() error {
 	r := initRouting()
 	port := viper.GetInt("api_port")

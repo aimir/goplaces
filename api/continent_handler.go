@@ -10,19 +10,19 @@ import (
 	"strings"
 )
 
-//Handle request to get all continents
+//GetContinentsHandler handle request to get all continents
 func GetContinentsHandler(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(repository.GetAllContinents())
 }
 
-//Handle request to get continent by ID
+//GetContinentHandler handle request to get continent by ID
 func GetContinentHandler(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
 	id, _ := strconv.Atoi(params["id"])
 	json.NewEncoder(w).Encode(repository.GetContinent(id))
 }
 
-//Handle request to get continent by code
+//GetContinentByCodeHandler handle request to get continent by code
 func GetContinentByCodeHandler(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
 	json.NewEncoder(w).Encode(repository.GetContinentByCode(params["code"]))

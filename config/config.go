@@ -2,7 +2,7 @@ package config
 
 import "github.com/spf13/viper"
 
-//Initialize configuration
+//InitConfig initialize configuration
 func InitConfig() {
 	viper.SetDefault("database", "places.db")
 	viper.SetDefault("api_port", 8080)

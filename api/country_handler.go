@@ -10,14 +10,14 @@ import (
 	"strings"
 )
 
-//Handle request to get all countries
+//GetCountriesHandler handle request to get all countries
 func GetCountriesHandler(w http.ResponseWriter, r *http.Request) {
 	countries := repository.GetAllCountries()
 	sortCountries(countries, r)
 	json.NewEncoder(w).Encode(countries)
 }
 
-//Handle request to get countries by continent ID
+//GetContinentCountriesHandler handle request to get countries by continent ID
 func GetContinentCountriesHandler(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
 	continent, _ := strconv.Atoi(params["continent"])
@@ -26,7 +26,7 @@ func GetContinentCountriesHandler(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(countries)
 }
 
-//Handle request to get countries by continent code
+//GetContinentCodeCountriesHandler handle request to get countries by continent code
 func GetContinentCodeCountriesHandler(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
 	countries := repository.GetAllCountriesByContinentCode(params["continent"])
@@ -34,14 +34,14 @@ func GetContinentCodeCountriesHandler(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(countries)
 }
 
-//Handle request to get country data by ID
+//GetCountryHandler handle request to get country data by ID
 func GetCountryHandler(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
 	id, _ := strconv.Atoi(params["id"])
 	json.NewEncoder(w).Encode(repository.GetCountry(id))
 }
 
-//Handle request to get country data by code
+//GetCountryByCodeHandler handle request to get country data by code
 func GetCountryByCodeHandler(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
 	json.NewEncoder(w).Encode(repository.GetCountryByCode(params["code"]))

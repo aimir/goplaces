@@ -7,7 +7,7 @@ import (
 
 var db *storm.DB
 
-//Open database connection
+//OpenDB open database connection
 func OpenDB(path string) error {
 	newDb, err := storm.Open(path, storm.Codec(gob.Codec))
 	if err != nil {
@@ -18,7 +18,7 @@ func OpenDB(path string) error {
 	return nil
 }
 
-//Get database connection
+//GetDB get database connection
 func GetDB() *storm.DB {
 	return db
 }

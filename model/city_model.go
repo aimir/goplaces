@@ -37,7 +37,7 @@ func (s citiesByName) Less(i, j int) bool {
 	return s.cities[i].Name < s.cities[j].Name
 }
 
-//Sort function. Sort cities by name
+//SortCitiesByName sorts function. Sort cities by name
 func SortCitiesByName(c []*City, desc bool) {
 	if desc {
 		sort.Sort(sort.Reverse(citiesByName{c}))
