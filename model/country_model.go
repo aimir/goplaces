@@ -2,6 +2,7 @@ package model
 
 import "sort"
 
+//Country data type
 type Country struct {
 	ID            int    `json:"id"`
 	Code          string `storm:"unique" json:"code"`
@@ -27,6 +28,7 @@ func (s countryByCode) Less(i, j int) bool {
 	return s.countries[i].Code < s.countries[j].Code
 }
 
+//Sort countries slice by name
 func SortCountriesByName(c []*Country, desc bool) {
 	if desc {
 		sort.Sort(sort.Reverse(countryByName{c}))
@@ -35,6 +37,7 @@ func SortCountriesByName(c []*Country, desc bool) {
 	}
 }
 
+//Sort countries slicer by code
 func SortCountriesByCode(c []*Country, desc bool) {
 	if desc {
 		sort.Sort(sort.Reverse(countryByCode{c}))
