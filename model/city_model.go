@@ -14,7 +14,7 @@ type City struct {
 	Name        string `json:"name"`
 }
 
-//City view data structure (full city data)
+//CityView is city view data structure (full city data)
 type CityView struct {
 	ID          int    `json:"id"`
 	CountryID   int    `json:"countryId"`
