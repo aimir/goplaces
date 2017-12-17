@@ -13,12 +13,23 @@ type City struct {
 	Name        string `json:"name"`
 }
 
+type CityView struct {
+	ID          int    `json:"id"`
+	CountryID   int    `json:"countryId"`
+	CountryCode string `json:"countryCode"`
+	CountryName string `json:"countryName"`
+	RegionID    int    `json:"regionId"`
+	RegionCode  string `json:"regionCode"`
+	RegionName  string `json:"regionName"`
+	Name        string `json:"name"`
+}
+
 type cities []*City
 
-func (s cities) Len() int { return len(s) }
+func (s cities) Len() int      { return len(s) }
 func (s cities) Swap(i, j int) { s[i], s[j] = s[j], s[i] }
 
-type citiesByName struct {cities}
+type citiesByName struct{ cities }
 
 func (s citiesByName) Less(i, j int) bool {
 	return s.cities[i].Name < s.cities[j].Name

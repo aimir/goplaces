@@ -1,9 +1,9 @@
 package repository
 
 import (
-	"github.com/aimir/goplaces/model"
-	"github.com/aimir/goplaces/database"
 	"fmt"
+	"github.com/aimir/goplaces/database"
+	"github.com/aimir/goplaces/model"
 )
 
 func GetAllCities() []*model.City {
@@ -48,4 +48,20 @@ func GetCity(id int) model.City {
 	database.GetDB().One("ID", id, &c)
 
 	return c
+}
+
+func GetCityView(id int) model.CityView {
+	city := GetCity(id)
+	country := GetCountry(city.CountryID)
+	region := GetRegion(city.RegionID)
+	return model.CityView{
+		ID:          city.ID,
+		CountryID:   country.ID,
+		CountryCode: country.Code,
+		CountryName: country.Name,
+		RegionID:    region.ID,
+		RegionCode:  region.Code,
+		RegionName:  region.Name,
+		Name:        city.Name,
+	}
 }

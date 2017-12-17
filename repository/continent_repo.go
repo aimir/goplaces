@@ -1,8 +1,8 @@
 package repository
 
 import (
-	"github.com/aimir/goplaces/model"
 	"github.com/aimir/goplaces/database"
+	"github.com/aimir/goplaces/model"
 )
 
 func GetAllContinents() []*model.Continent {

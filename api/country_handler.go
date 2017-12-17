@@ -1,12 +1,12 @@
 package api
 
 import (
+	"encoding/json"
+	"github.com/aimir/goplaces/model"
 	"github.com/aimir/goplaces/repository"
 	"github.com/gorilla/mux"
 	"net/http"
-	"encoding/json"
 	"strconv"
-	"github.com/aimir/goplaces/model"
 	"strings"
 )
 
@@ -50,7 +50,9 @@ func sortCountries(c []*model.Country, r *http.Request) {
 	}
 	desc := strings.ToLower(queryValues.Get("direct")) == "desc"
 	switch strings.ToLower(sortBy) {
-	case "code": model.SortCountriesByCode(c, desc)
-	default: model.SortCountriesByName(c, desc)
+	case "code":
+		model.SortCountriesByCode(c, desc)
+	default:
+		model.SortCountriesByName(c, desc)
 	}
 }

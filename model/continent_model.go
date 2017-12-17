@@ -10,16 +10,16 @@ type Continent struct {
 
 type continents []*Continent
 
-func (s continents) Len() int { return len(s) }
+func (s continents) Len() int      { return len(s) }
 func (s continents) Swap(i, j int) { s[i], s[j] = s[j], s[i] }
 
-type continentsByName struct {continents}
+type continentsByName struct{ continents }
 
 func (s continentsByName) Less(i, j int) bool {
 	return s.continents[i].Name < s.continents[j].Name
 }
 
-type continentsByCode struct {continents}
+type continentsByCode struct{ continents }
 
 func (s continentsByCode) Less(i, j int) bool {
 	return s.continents[i].Code < s.continents[j].Code

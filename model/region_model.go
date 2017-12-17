@@ -12,16 +12,16 @@ type Region struct {
 
 type regions []*Region
 
-func (s regions) Len() int { return len(s) }
+func (s regions) Len() int      { return len(s) }
 func (s regions) Swap(i, j int) { s[i], s[j] = s[j], s[i] }
 
-type regionsByName struct {regions}
+type regionsByName struct{ regions }
 
 func (s regionsByName) Less(i, j int) bool {
 	return s.regions[i].Name < s.regions[j].Name
 }
 
-type regionsByCode struct {regions}
+type regionsByCode struct{ regions }
 
 func (s regionsByCode) Less(i, j int) bool {
 	return s.regions[i].Code < s.regions[j].Code

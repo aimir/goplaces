@@ -1,10 +1,10 @@
 package api
 
 import (
-	"github.com/gorilla/mux"
-	"net/http"
 	"fmt"
+	"github.com/gorilla/mux"
 	"github.com/spf13/viper"
+	"net/http"
 )
 
 func StartAPI() error {

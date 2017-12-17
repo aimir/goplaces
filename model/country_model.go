@@ -12,15 +12,17 @@ type Country struct {
 
 type countries []*Country
 
-func (s countries) Len() int { return len(s) }
+func (s countries) Len() int      { return len(s) }
 func (s countries) Swap(i, j int) { s[i], s[j] = s[j], s[i] }
 
-type countryByName struct{countries}
+type countryByName struct{ countries }
+
 func (s countryByName) Less(i, j int) bool {
 	return s.countries[i].Name < s.countries[j].Name
 }
 
-type countryByCode struct{countries}
+type countryByCode struct{ countries }
+
 func (s countryByCode) Less(i, j int) bool {
 	return s.countries[i].Code < s.countries[j].Code
 }

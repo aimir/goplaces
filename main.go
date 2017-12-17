@@ -1,11 +1,11 @@
 package main
 
 import (
-	"log"
-	"github.com/aimir/goplaces/database"
-	"github.com/aimir/goplaces/config"
-	"github.com/spf13/viper"
 	"github.com/aimir/goplaces/api"
+	"github.com/aimir/goplaces/config"
+	"github.com/aimir/goplaces/database"
+	"github.com/spf13/viper"
+	"log"
 )
 
 func main() {

@@ -1,12 +1,12 @@
 package api
 
 import (
-	"github.com/gorilla/mux"
-	"github.com/aimir/goplaces/repository"
-	"net/http"
-	"strconv"
 	"encoding/json"
 	"github.com/aimir/goplaces/model"
+	"github.com/aimir/goplaces/repository"
+	"github.com/gorilla/mux"
+	"net/http"
+	"strconv"
 	"strings"
 )
 
@@ -39,7 +39,9 @@ func sortRegions(rg []*model.Region, r *http.Request) {
 	}
 	desc := strings.ToLower(queryValues.Get("direct")) == "desc"
 	switch strings.ToLower(sortBy) {
-	case "code": model.SortRegionsByCode(rg, desc)
-	default: model.SortRegionsByName(rg, desc)
+	case "code":
+		model.SortRegionsByCode(rg, desc)
+	default:
+		model.SortRegionsByName(rg, desc)
 	}
 }

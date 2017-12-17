@@ -1,12 +1,12 @@
 package api
 
 import (
-	"github.com/gorilla/mux"
-	"github.com/aimir/goplaces/repository"
-	"net/http"
-	"strconv"
 	"encoding/json"
 	"github.com/aimir/goplaces/model"
+	"github.com/aimir/goplaces/repository"
+	"github.com/gorilla/mux"
+	"net/http"
+	"strconv"
 	"strings"
 )
 
@@ -44,7 +44,7 @@ func GetCountryCodeCitiesHandler(w http.ResponseWriter, r *http.Request) {
 func GetCityHandler(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
 	id, _ := strconv.Atoi(params["id"])
-	json.NewEncoder(w).Encode(repository.GetCity(id))
+	json.NewEncoder(w).Encode(repository.GetCityView(id))
 }
 
 func sortCities(c []*model.City, r *http.Request) {
